@@ -5,7 +5,9 @@ Professor: Hudson Neves.
 Alunos: Ana Cristina Oliveira da Silva,
         Audeane de Lucena Santana e 
         Luiz Felipe Pereira da Silva
-        
-Projeto executado para a linguagem de programação Microsoft SQL Server.
+
+CEP - SENAC - Tallal Abu Allan
+
+Projeto executado para a linguagem de programação Microsoft SQL Server Management Studio.
 
 
