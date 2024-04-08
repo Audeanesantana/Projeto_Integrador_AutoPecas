@@ -1,5 +1,3 @@
-SENAC - Tallal Abu Allan
-
 CREATE TABLE Cliente (
     IDCliente INT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
