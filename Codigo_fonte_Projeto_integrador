@@ -1,3 +1,20 @@
+CREATE TABLE Contato (
+    IDcontato INT PRIMARY KEY,
+    Telefone CHAR(15),
+    Endereco VARCHAR(100) NOT NULL,
+    CEP CHAR(9),
+    Email VARCHAR(60) NOT NULL
+);
+CREATE TABLE Veiculo (
+    IDVeiculo INT PRIMARY KEY,
+    Marca_veic CHAR(50) NOT NULL,
+    Modelo_veic CHAR(22) NOT NULL,
+    Placa_veic VARCHAR(15) NOT NULL
+);
+CREATE TABLE Marca (
+    IDmarca INT PRIMARY KEY,
+    Descricao VARCHAR(100) NOT NULL
+);
 CREATE TABLE Cliente (
     IDCliente INT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
@@ -5,7 +22,6 @@ CREATE TABLE Cliente (
     Contato_idcontato INT,
     FOREIGN KEY (Contato_idcontato) REFERENCES Contato(IDcontato)
 );
-
 CREATE TABLE Pessoa_Fisica (
     IDPessoa INT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
@@ -15,7 +31,6 @@ CREATE TABLE Pessoa_Fisica (
     Contato_idcontato INT,
     FOREIGN KEY (Contato_idcontato) REFERENCES Contato(IDcontato)
 );
-
 CREATE TABLE Pessoa_Juridica (
     IDPessoa INT PRIMARY KEY,
     Nome_fantasia VARCHAR(50) NOT NULL,
@@ -25,22 +40,6 @@ CREATE TABLE Pessoa_Juridica (
     Contato_idcontato INT,
     FOREIGN KEY (Contato_idcontato) REFERENCES Contato(IDcontato)
 );
-
-CREATE TABLE Contato (
-    IDcontato INT PRIMARY KEY,
-    Telefone CHAR(15),
-    Endereco VARCHAR(100) NOT NULL,
-    CEP CHAR(9),
-    Email VARCHAR(60) NOT NULL
-);
-
-CREATE TABLE Veiculo (
-    IDVeiculo INT PRIMARY KEY,
-    Marca_veic CHAR(50) NOT NULL,
-    Modelo_veic CHAR(22) NOT NULL,
-    Placa_veic VARCHAR(15) NOT NULL
-);
-
 CREATE TABLE Fornecedor (
     IDFornecedor INT PRIMARY KEY,
     Nome_fantasia VARCHAR(50) NOT NULL,
@@ -50,7 +49,6 @@ CREATE TABLE Fornecedor (
     Contato_idcontato INT,
     FOREIGN KEY (Contato_idcontato) REFERENCES Contato(IDcontato)
 );
-
 CREATE TABLE Produto (
     IDProduto INT PRIMARY KEY,
     Nome VARCHAR(50) NOT NULL,
@@ -62,25 +60,18 @@ CREATE TABLE Produto (
     FOREIGN KEY (Modelo_idmod) REFERENCES Modelo(IDmod)
 );
 
-CREATE TABLE Marca (
-    IDmarca INT PRIMARY KEY,
-    Descricao VARCHAR(100) NOT NULL
-);
-
 CREATE TABLE Modelo (
     IDmod INT PRIMARY KEY,
     Descricao VARCHAR(100) NOT NULL,
     Marca_idmarca INT,
     FOREIGN KEY (Marca_idmarca) REFERENCES Marca(IDmarca)
 );
-
 CREATE TABLE Venda (
     IDvenda INT PRIMARY KEY,
     DTVenda DATE,
     Cliente_idcliente INT,
     FOREIGN KEY (Cliente_idcliente) REFERENCES Cliente(IDCliente)
 );
-
 CREATE TABLE Itens_venda (
     IDvenda INT,
     IDproduto INT,
@@ -90,12 +81,11 @@ CREATE TABLE Itens_venda (
     FOREIGN KEY (IDvenda) REFERENCES Venda(IDvenda),
     FOREIGN KEY (IDproduto) REFERENCES Produto(IDProduto)
 );
-
-
 ALTER TABLE Veiculo
 ADD Cliente_idcliente INT NOT NULL;
 
 SP_HELP Veiculo;
+
 ALTER TABLE Veiculo
 ADD CONSTRAINT fk_cliente
     FOREIGN KEY (Cliente_idcliente)
